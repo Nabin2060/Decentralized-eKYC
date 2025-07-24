@@ -1,8 +1,6 @@
-'use strict'
-
-const rmAll = require('./rm-all')
-const last = require('it-last')
-const configure = require('../lib/configure')
+import { createRmAll } from './rm-all.js'
+import last from 'it-last'
+import { configure } from '../lib/configure.js'
 
 /**
  * @typedef {import('../types').HTTPClientExtraOptions} HTTPClientExtraOptions
@@ -12,15 +10,15 @@ const configure = require('../lib/configure')
 /**
  * @param {import('../types').Options} config
  */
-module.exports = (config) => {
-  const all = rmAll(config)
+export const createRm = (config) => {
+  const all = createRmAll(config)
 
   return configure(() => {
     /**
      * @type {PinAPI["rm"]}
      */
     async function rm (path, options = {}) {
-      // @ts-ignore last can return undefined
+      // @ts-expect-error last can return undefined
       return last(all([{
         path,
         ...options

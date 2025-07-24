@@ -24,7 +24,7 @@ async function main() {
     const VC = await hre.ethers.getContractFactory("VerifiableCredentialRegistry");
     const vc = await VC.deploy(); // Deploy contract
 
-    await vc.waitForDeployment(); // ✅ deployed() को सट्टा यो प्रयोग गर्नुहोस्
+    await vc.waitForDeployment();
 
     const address = await vc.getAddress(); // ✅ Get deployed address
     console.log("Contract deployed to:", address);

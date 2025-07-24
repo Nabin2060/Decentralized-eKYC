@@ -14,7 +14,7 @@ const api = axios.create({
 export async function login(email: string, password: string) {
   try {
     const res = await api.post("/api/auth/login", { email, password });
-    // token सुरक्षित राख्नुहोस्
+    
     if (res.data.token) {
       localStorage.setItem("token", res.data.token);
     }

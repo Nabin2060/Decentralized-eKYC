@@ -1,21 +1,18 @@
-'use strict'
-
-const toCamel = require('../lib/object-to-camel')
-const configure = require('../lib/configure')
-const toUrlSearchParams = require('../lib/to-url-search-params')
+import { objectToCamel } from '../lib/object-to-camel.js'
+import { configure } from '../lib/configure.js'
+import { toUrlSearchParams } from '../lib/to-url-search-params.js'
 
 /**
  * @typedef {import('../types').HTTPClientExtraOptions} HTTPClientExtraOptions
  * @typedef {import('ipfs-core-types/src/key').API<HTTPClientExtraOptions>} KeyAPI
  */
 
-module.exports = configure(api => {
+export const createRename = configure(api => {
   /**
    * @type {KeyAPI["rename"]}
    */
   async function rename (oldName, newName, options = {}) {
     const res = await api.post('key/rename', {
-      timeout: options.timeout,
       signal: options.signal,
       searchParams: toUrlSearchParams({
         arg: [
@@ -27,8 +24,8 @@ module.exports = configure(api => {
       headers: options.headers
     })
 
-    // @ts-ignore server output is not typed
-    return toCamel(await res.json())
+    // @ts-expect-error server output is not typed
+    return objectToCamel(await res.json())
   }
   return rename
 })

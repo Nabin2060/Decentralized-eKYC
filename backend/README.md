@@ -95,19 +95,19 @@ Create a `.env` file based on `env.example`:
 
 ```env
 # Server Configuration
-PORT=3000
-NODE_ENV=development
+PORT=your
+NODE_ENV=your
 
 # MongoDB Configuration
-MONGODB_URI=mongodb://localhost:27017/decentralized_ekyc
+MONGODB_URI=mongodb://localhost:/decentralized_ekyc
 
 # JWT Configuration
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-JWT_EXPIRES_IN=24h
+JWT_EXPIRES_IN=time
 
 # IPFS Configuration
-IPFS_API_URL=http://localhost:5001
-IPFS_GATEWAY_URL=https://ipfs.io/ipfs/
+IPFS_API_URL=http://localhost
+IPFS_GATEWAY_URL=https://
 
 # Ethereum Configuration
 ETHEREUM_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID
@@ -119,9 +119,9 @@ DID_METHOD=did:ethr
 DID_PRIVATE_KEY=your-did-private-key
 
 # Security
-BCRYPT_ROUNDS=12
-RATE_LIMIT_WINDOW_MS=900000
-RATE_LIMIT_MAX_REQUESTS=100
+BCRYPT_ROUNDS=12000
+RATE_LIMIT_WINDOW_MS=your
+RATE_LIMIT_MAX_REQUESTS=000
 ```
 
 ## API Endpoints
@@ -163,7 +163,7 @@ RATE_LIMIT_MAX_REQUESTS=100
 ### Register a new user
 
 ```bash
-curl -X POST http://localhost:3000/auth/register \
+curl -X POST http://localhost:3000/.../register \
   -H "Content-Type: application/json" \
   -d '{
     "username": "john_doe",
@@ -181,7 +181,7 @@ curl -X POST http://localhost:3000/auth/register \
 ### Login
 
 ```bash
-curl -X POST http://localhost:3000/auth/login \
+curl -X POST http://localhost:3000/..../login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "john@example.com",
@@ -192,7 +192,7 @@ curl -X POST http://localhost:3000/auth/login \
 ### Issue a credential
 
 ```bash
-curl -X POST http://localhost:3000/credentials/issue \
+curl -X POST http://localhost:3000/...../issue \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
@@ -214,7 +214,7 @@ curl -X POST http://localhost:3000/credentials/issue \
 ### Request consent
 
 ```bash
-curl -X POST http://localhost:3000/consent/request \
+curl -X POST http://localhost:3000/.../request \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{

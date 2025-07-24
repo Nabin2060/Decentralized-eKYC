@@ -39,12 +39,12 @@ export default function AdminDashboard() {
 
   return (
     <div style={{ maxWidth: 700, margin: "auto", padding: 24 }}>
-      <h2>Admin Dashboard / प्रशासक ड्यासबोर्ड</h2>
+      <h2>Admin Dashboard </h2>
       {error && <div style={{ color: "red" }}>{error}</div>}
       {loading ? (
         <div>Loading...</div>
       ) : credentials.length === 0 ? (
-        <div>No documents found. / कुनै कागजात फेला परेन।</div>
+        <div>No documents found.</div>
       ) : (
         <ul>
           {credentials.map((cred, idx) => (
@@ -52,8 +52,8 @@ export default function AdminDashboard() {
               key={cred._id || idx}
               style={{ border: "1px solid #eee", marginBottom: 8, padding: 8 }}
             >
-              <div>नाम: {cred.data?.name || "N/A"}</div>
-              <div>प्रकार: {cred.type}</div>
+              <div>Name: {cred.data?.name || "N/A"}</div>
+              <div>type: {cred.type}</div>
               <div>Status: {cred.status || cred.data?.status || "pending"}</div>
               {cred.ipfsUrl && (
                 <div>
@@ -73,9 +73,7 @@ export default function AdminDashboard() {
                     disabled={approving === cred._id}
                     style={{ marginTop: 8 }}
                   >
-                    {approving === cred._id
-                      ? "Approving..."
-                      : "Approve (स्वीकृत गर्नुहोस्)"}
+                    {approving === cred._id ? "Approving..." : "Approve"}
                   </button>
                 )}
             </li>

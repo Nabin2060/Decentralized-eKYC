@@ -24,7 +24,7 @@ export const EthereumProvider = ({
   const [signer, setSigner] = useState<ethers.JsonRpcSigner | null>(null);
   const [address, setAddress] = useState("");
 
-  // ✅ Wallet connect जब page खोलिन्छ
+  // ✅ Wallet connect page open huda
   useEffect(() => {
     const connectWallet = async () => {
       if (typeof window !== "undefined" && (window as any).ethereum) {

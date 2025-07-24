@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import useEthereum from "../hooks/useEthereum";
 
-// यी तपाईंको contract को address र ABI राख्नुहोस्
-const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+// contract address and ABI
+const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 const contractABI = [
-    // तपाईंको contract को ABI array यहाँ paste गर्नुहोस्
-    // सामान्यतया यो hardhat deploy पछि artifacts/contracts/YourContract.json मा हुन्छ
-    // एउटा example function ABI:
     {
         "inputs": [],
         "name": "yourFunction",
@@ -269,8 +266,7 @@ export default function BlockchainPage() {
             return;
         }
         try {
-            const data = await contract.yourFunction(); // तपाईंको smart contract function call गर्नुहोस्
-            setContractData(data.toString());
+            const data = await contract.yourFunction();
         } catch (err) {
             console.error(err);
             alert("Error calling contract function");
